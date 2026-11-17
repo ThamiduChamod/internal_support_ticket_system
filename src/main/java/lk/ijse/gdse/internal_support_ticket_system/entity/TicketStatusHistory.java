@@ -1,5 +1,6 @@
 package lk.ijse.gdse.internal_support_ticket_system.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lk.ijse.gdse.internal_support_ticket_system.entity.enums.TicketStatus;
 import lombok.*;
@@ -18,6 +19,7 @@ public class TicketStatusHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ticket_id", nullable = false)
     private Ticket ticket;

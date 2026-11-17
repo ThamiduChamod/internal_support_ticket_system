@@ -72,7 +72,6 @@ public class TicketServiceImpl implements TicketService {
 
     @Transactional
     public TicketResponse updateStatus(Long id, TicketStatus newStatus, String actorRef) {
-        // Internal usage සඳහා Entity එක ලබා ගැනීම
         Ticket ticket = ticketRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Ticket not found with id: " + id));
 
@@ -115,7 +114,6 @@ public class TicketServiceImpl implements TicketService {
     }
 
     public List<TicketStatusHistory> getTicketHistory(Long id) {
-        // ටිකට් එක තිබේදැයි පරීක්ෂා කිරීම
         boolean exists = ticketRepository.existsById(id);
         if (!exists) {
             throw new EntityNotFoundException("Ticket not found with id: " + id);
