@@ -1,0 +1,174 @@
+{
+  "info": {
+    "name": "HelpDesk Lite API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Create Ticket",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Login page error\",\n    \"description\": \"Users are unable to login using Google SSO.\",\n    \"priority\": \"HIGH\",\n    \"requesterName\": \"John Doe\",\n    \"requesterEmail\": \"john.doe@example.com\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/tickets",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "tickets"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Get All Tickets (With Optional Filters)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/tickets?status=OPEN&priority=HIGH",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "tickets"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "OPEN",
+              "description": "Optional: OPEN, IN_PROGRESS, RESOLVED, CLOSED"
+            },
+            {
+              "key": "priority",
+              "value": "HIGH",
+              "description": "Optional: LOW, MEDIUM, HIGH"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Get Ticket By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/tickets/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "tickets",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Update Ticket Status",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"status\": \"IN_PROGRESS\",\n    \"actorRef\": \"agent.smith@example.com\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/tickets/1/status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "tickets",
+            "1",
+            "status"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. Assign Ticket",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"assigneeRef\": \"Support Agent Alex\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/tickets/1/assignee",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "tickets",
+            "1",
+            "assignee"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "6. Get Ticket Status History",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/tickets/1/history",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "tickets",
+            "1",
+            "history"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
